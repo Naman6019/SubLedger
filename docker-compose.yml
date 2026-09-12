@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: subledger_api
+    ports:
+      - "8000:8000"
+    environment:
+      - PROJECT_NAME=SubLedger
+      - APP_ENV=production
+      - API_V1_STR=/api/v1
+      - DATABASE_URL=sqlite:///./data/subledger.db
+      - DEBUG=False
+      - PORT=8000
+      - HOST=0.0.0.0
+    volumes:
+      - subledger_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  subledger_data:
