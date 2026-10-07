@@ -79,6 +79,8 @@ SubLedger/
 ├── DESIGN.md                   # Detailed Low-Level Design documentation
 ├── Dockerfile                  # Production container definition
 ├── docker-compose.yml          # Containerized orchestration
+├── openapi.json                # Exported OpenAPI/Swagger specification
+├── SubLedger.postman_collection.json # Ready-to-import Postman collection
 ├── pytest.ini                  # Pytest configuration
 ├── requirements.txt            # Python dependencies
 └── README.md
@@ -120,8 +122,10 @@ cp .env.example .env
 ```bash
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
-- **Interactive Swagger Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
-- **ReDoc Alternative**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+- **Interactive Swagger Docs (Live)**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **ReDoc Alternate Docs**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+- **OpenAPI Schema (JSON)**: [`openapi.json`](./openapi.json) or [http://localhost:8000/openapi.json](http://localhost:8000/openapi.json)
+- **Postman Collection**: [`SubLedger.postman_collection.json`](./SubLedger.postman_collection.json) (Ready to import into Postman)
 - **Health Check**: [http://localhost:8000/health](http://localhost:8000/health)
 
 ---
