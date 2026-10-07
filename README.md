@@ -122,11 +122,29 @@ cp .env.example .env
 ```bash
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
-- **Interactive Swagger Docs (Live)**: [http://localhost:8000/docs](http://localhost:8000/docs)
-- **ReDoc Alternate Docs**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
-- **OpenAPI Schema (JSON)**: [`openapi.json`](./openapi.json) or [http://localhost:8000/openapi.json](http://localhost:8000/openapi.json)
+
+### 5. Access Interactive Swagger Documentation
+Once the server is running, access the interactive API explorer and documentation:
+
+- **Swagger UI (Interactive API Explorer)**: [http://localhost:8000/docs](http://localhost:8000/docs)
+  - You can test any endpoint in real time by clicking **"Try it out"** > **"Execute"**.
+- **Quick Open Command from Terminal**:
+  - **Windows (PowerShell)**:
+    ```powershell
+    Start-Process "http://localhost:8000/docs"
+    ```
+  - **macOS**:
+    ```bash
+    open http://localhost:8000/docs
+    ```
+  - **Linux**:
+    ```bash
+    xdg-open http://localhost:8000/docs
+    ```
+- **ReDoc Alternate Documentation**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+- **Raw OpenAPI Schema (JSON)**: [http://localhost:8000/openapi.json](http://localhost:8000/openapi.json) or local file [`openapi.json`](./openapi.json)
 - **Postman Collection**: [`SubLedger.postman_collection.json`](./SubLedger.postman_collection.json) (Ready to import into Postman)
-- **Health Check**: [http://localhost:8000/health](http://localhost:8000/health)
+- **Health Check Probe**: [http://localhost:8000/health](http://localhost:8000/health)
 
 ---
 
@@ -137,6 +155,9 @@ You can run SubLedger with Docker and Docker Compose:
 ```bash
 # Build and start container
 docker-compose up --build -d
+
+# Access Swagger UI in browser
+# http://localhost:8000/docs
 
 # View container logs
 docker-compose logs -f
